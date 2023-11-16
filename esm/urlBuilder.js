@@ -121,7 +121,7 @@ export var parseFilters = function (params, defaultListOp) {
                     return "".concat(operation, ".*").concat(value, "*");
                 if (['and', 'or'].includes(operation))
                     return "".concat(value);
-                if (['cs', 'cd'].includes(operation))
+                if (['cs', 'cd'].includes(operation) && Array.isArray(value))
                     return "".concat(operation, ".{").concat(value, "}");
                 return "".concat(operation, ".").concat(value);
             })();
@@ -179,7 +179,9 @@ export var encodeId = function (data, primaryKey) {
 };
 export var removePrimaryKey = function (data, primaryKey) {
     var newData = __assign({}, data);
-    primaryKey.forEach(function (key) { delete newData[key]; });
+    primaryKey.forEach(function (key) {
+        delete newData[key];
+    });
     return newData;
 };
 export var dataWithVirtualId = function (data, primaryKey) {

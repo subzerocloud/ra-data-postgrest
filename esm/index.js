@@ -151,7 +151,9 @@ export default (function (config) { return ({
         })
             .then(function (_a) {
             var json = _a.json;
-            return ({ data: dataWithVirtualId(json, primaryKey) });
+            return ({
+                data: dataWithVirtualId(json, primaryKey),
+            });
         });
     },
     updateMany: function (resource, params) {
@@ -213,7 +215,9 @@ export default (function (config) { return ({
         })
             .then(function (_a) {
             var json = _a.json;
-            return ({ data: dataWithVirtualId(json, primaryKey) });
+            return ({
+                data: dataWithVirtualId(json, primaryKey),
+            });
         });
     },
     deleteMany: function (resource, params) {
